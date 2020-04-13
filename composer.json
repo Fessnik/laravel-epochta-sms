@@ -1,5 +1,5 @@
 {
-    "name": "fomvasss/laravel-epochta-sms",
+    "name": "fessnik/laravel-epochta-sms",
     "description": "Package for sending SMS in Laravel",
     "keywords": ["laravel", "epochta", "sms", "notification"],
     "license": "MIT",
