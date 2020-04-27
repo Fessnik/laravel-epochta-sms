@@ -18,22 +18,22 @@ Fomvasss\EpochtaService\SmsServiceProvider::class,
 И для использования фасада, добавить в массив aliases строку:
 
 ```php
-'Sms' => Fomvasss\EpochtaService\Facade\Sms::class,
+'Sms' => Fessnik\EpochtaService\Facade\Sms::class,
 ```
 ---
 
 Публикация конфигов:
 
 ```bash
-php artisan  vendor:publish --provider="Fomvasss\EpochtaService\SmsServiceProvider" --tag=epochta-sms-config
+php artisan  vendor:publish --provider="Fessnik\EpochtaService\SmsServiceProvider" --tag=epochta-sms-config
 ```
 Если вы планируете сохранять информацию об отправленных СМС а также их статусы, добавьте миграцию:
 ```bash
-php artisan migrate --path=vendor/fomvasss/laravel-epochta-sms/database/migrations
+php artisan migrate --path=vendor/fessnik/laravel-epochta-sms/database/migrations
 ``` 
 а если передумаете, то:
 ```bash
-php artisan migrate:rollback --path=vendor/fomvasss/laravel-epochta-sms/database/migrations
+php artisan migrate:rollback --path=vendor/fessnik/laravel-epochta-sms/database/migrations
 ```
 
 ## Использование
