@@ -25,20 +25,11 @@ class Stat extends \Stat
      * @param int $smsLifetime
      * @return bool|mixed
      */
-    public function sendSMS($body, $phone, $sender = null, $datetime = null, $smsLifetime = null)
+    public function sendSMS($attributes)
     {
-        $sender = $this->checkSender($sender);
-        $phone = $this->clearPhone($phone);
-        $smsLifetime = $this->getLifeTime($smsLifetime);
-
-        $attributes = [
-            'sender' => $sender,
-            'phone' => $phone,
-            'body' => $body,
-            'datetime' => $datetime,
-            'lifetime' => $smsLifetime,
-            'attempt' => 1,
-        ];
+        $attributes['sender'] = $this->checkSender($attributes['sender']);
+        $attributes['phone'] = $this->clearPhone($attributes['phone']);
+        $attributes['lifetime'] = $this->getLifeTime($attributes['lifetime']);
 
         $result = $this->dispatch($attributes);
 
@@ -210,13 +201,7 @@ class Stat extends \Stat
             $smsModel = $this->smsDbSaveNew($attributes);
         }
 
-        $result = parent::sendSMS(
-            $attributes['sender'],
-            $attributes['body'],
-            $attributes['phone'],
-            $attributes['datetime'],
-            $attributes['lifetime']
-        );
+        $result = parent::sendSMS($attributes);
 
         event(new AfterSendingSmsEvent($attributes, $result, $smsModel));
 
