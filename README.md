@@ -5,7 +5,7 @@
 ## Установка
 Запустить 
 ```bash
-composer require "fomvasss/laravel-epochta-sms"
+composer require "fessnik/laravel-epochta-sms"
 ```
 ---
 ### Для Laravel < v5.5 !
